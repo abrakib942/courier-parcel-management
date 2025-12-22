@@ -152,13 +152,7 @@ const DataTable = ({
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={columns.length} className="text-center">
-              <p className="text-orange-500 flex items-center justify-center gap-2">
-                <Lightbulb className="h-4 w-4" />
-                {`"Did you know? You can scroll horizontally by holding down the Shift key and using your mouse scroll wheel. Try it out to navigate wide web pages or spreadsheets more easily!" - Rafi Hasnain`}
-                <Mouse className="h-4 w-4" />
-              </p>
-            </TableCell>
+            <TableCell colSpan={columns.length} className="text-center"></TableCell>
           </TableRow>
         </TableFooter>
       </Table>

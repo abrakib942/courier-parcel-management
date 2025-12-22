@@ -65,7 +65,7 @@ monorepo/
 
 ```bash
 git clone <repository-url>
-cd 
+cd
 ```
 
 2. Install dependencies:

@@ -22,12 +22,12 @@
     "@repo/admin#dev": {
       "cache": false,
       "persistent": true,
-      "dependsOn": ["@repo/api#dev"]
+      "dependsOn": []
     },
     "@repo/web#dev": {
       "cache": false,
       "persistent": true,
-      "dependsOn": ["@repo/api#dev"]
+      "dependsOn": []
     },
     "lint": {
       "dependsOn": ["^build"]

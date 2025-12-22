@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 5003",
+    "dev": "next dev --turbopack -p 5003",
     "build": "next build",
     "start": "next start -p 5003",
     "lint": "eslint .",
@@ -65,7 +65,7 @@
     "lucide-react": "^0.344.0",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.43",
-    "next": "^15.0.0",
+    "next": "^15.0.5",
     "next-themes": "^0.3.0",
     "react": "^18.2.0",
     "react-big-calendar": "^1.8.4",
