@@ -15,6 +15,9 @@ import { AuthModule } from '@/modules/auth/auth.module';
 import { UserModule } from '@/modules/user/user.module';
 import { FolderModule } from './modules/folder/folder.module';
 import { HealthModule } from './modules/health/health.module';
+import { ParcelModule } from './modules/parcel/parcel.module';
+import { AgentAssignmentModule } from './modules/agent-assignment/agent-assignment.module';
+import { ParcelHistoryModule } from './modules/parcel-history/parcel-history.module';
 
 @Module({
   imports: [
@@ -64,6 +67,9 @@ import { HealthModule } from './modules/health/health.module';
     AuthModule,
     UserModule,
     FolderModule,
+    ParcelModule,
+    AgentAssignmentModule,
+    ParcelHistoryModule,
   ],
   providers: [TransformInterceptor],
 })

@@ -59,7 +59,7 @@ model UserRole {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   role Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
 
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
 
   @@id([userId, roleId])
@@ -185,8 +185,8 @@ model Parcel {
   trackingCode String @unique
   customerId   Int
   customer     User   @relation("CustomerParcels", fields: [customerId], references: [id])
-  userId    Int?
-  user      User?    @relation(fields: [userId], references: [id])
+  userId       Int?
+  user         User?  @relation(fields: [userId], references: [id])
 
   pickupAddress   String
   deliveryAddress String
