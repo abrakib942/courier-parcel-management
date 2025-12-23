@@ -53,7 +53,7 @@ const Layout = ({ children, title }: LayoutProps) => {
 
       <div
         className={cn(
-          'fixed z-[999] overflow-y-auto overflow-x-hidden select-none',
+          'fixed z-[999] overflow-y-auto overflow-x-hidden select-none !bg-white',
           'transition-transform duration-200 bg-surface-overlay shadow-layout',
           'layout-sidebar-scrollbar',
           // Desktop: visible sidebar
@@ -85,11 +85,7 @@ const Layout = ({ children, title }: LayoutProps) => {
 
       {isSidebarOpen && (
         <div
-          className={cn(
-            'fixed top-0 left-0 z-[998] w-full h-full',
-            'bg-black/50 backdrop-blur-sm',
-            'lg:hidden',
-          )}
+          className={cn('fixed top-0 left-0 z-[998] w-full h-full', 'lg:hidden')}
           onClick={() => setIsSidebarOpen(false)}
         />
       )}

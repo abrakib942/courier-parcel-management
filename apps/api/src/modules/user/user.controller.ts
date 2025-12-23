@@ -98,4 +98,20 @@ export class UserController {
   async deleteById(@Param('id') id: string) {
     return await this.userService.removeById(parseInt(id));
   }
+
+  @CheckAbility({ subject: 'user', action: 'read' })
+  @UseGuards(PermissionGuard)
+  @HttpCode(HttpStatus.OK)
+  @Get('api/v1/customers')
+  async getCustomers() {
+    return await this.userService.getCustomers();
+  }
+
+  @CheckAbility({ subject: 'user', action: 'read' })
+  @UseGuards(PermissionGuard)
+  @HttpCode(HttpStatus.OK)
+  @Get('api/v1/agents')
+  async getAgents() {
+    return await this.userService.getAgents();
+  }
 }

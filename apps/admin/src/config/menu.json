@@ -24,5 +24,21 @@
     "label": "File Management",
     "icon": "Folder",
     "to": "/folders"
+  },
+  {
+    "label": "Parcel Management",
+    "icon": "Package",
+    "to": "/parcels"
+  },
+  {
+    "label": "Agent Assignment",
+    "icon": "UserCheck",
+    "to": "/agent-assignment"
+  },
+
+  {
+    "label": "Payments",
+    "icon": "CreditCard",
+    "to": "/payments"
   }
 ]

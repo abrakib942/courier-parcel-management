@@ -37,6 +37,10 @@ export const getFolderById = (folderId: number) =>
 export const getProfile = (authorization: string) =>
   callGetApi(apiBaseUrl + `/api/v1/user-profile`, authorization);
 
+export const getCustomers = () => callGetApi(apiBaseUrl + `/api/v1/customers`);
+
+export const getAgents = () => callGetApi(apiBaseUrl + `/api/v1/agents`);
+
 export interface UploadFileToStorageOptions {
   file: File;
   fileName?: string;

@@ -9,38 +9,26 @@ export class ParcelService {
   constructor(@Inject(DbService) private readonly db: DbService) {}
 
   async save(dto: CreateParcelDto): Promise<ServiceResult> {
-    if (!dto.pickupAddress || !dto.deliveryAddress) {
-      return createErrorResult(
-        { name: 'badRequest', message: 'Invalid addresses' },
-        'Pickup and delivery address are required',
-      );
-    }
-
-    if (dto.paymentType === 'COD' && !dto.codAmount) {
-      return createErrorResult(
-        { name: 'badRequest', message: 'COD amount required' },
-        'COD amount is required for COD parcels',
-      );
-    }
+    console.log({ customerIdType: typeof dto.customerId });
 
     const data = await this.db.parcel.create({
       data: {
         trackingCode: `TRK-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
-        customerId: dto.customerId,
-        pickupAddress: dto.pickupAddress,
-        deliveryAddress: dto.deliveryAddress,
-        pickupLat: dto.pickupLat,
-        pickupLng: dto.pickupLng,
-        deliveryLat: dto.deliveryLat,
-        deliveryLng: dto.deliveryLng,
-        parcelType: dto.parcelType,
-        status: dto.status,
+        customerId: Number(dto.customerId),
+        pickupAddress: dto?.pickupAddress,
+        deliveryAddress: dto?.deliveryAddress,
+        pickupLat: dto?.pickupLat,
+        pickupLng: dto?.pickupLng,
+        deliveryLat: dto?.deliveryLat,
+        deliveryLng: dto?.deliveryLng,
+        parcelType: dto?.parcelType,
+        status: dto?.status,
         paymentStatus: dto.paymentStatus,
-        parcelSize: dto.parcelSize,
-        paymentType: dto.paymentType,
-        codAmount: dto.codAmount,
+        parcelSize: dto?.parcelSize,
+        paymentType: dto?.paymentType,
+        codAmount: dto?.codAmount,
         qrCode: randomUUID(),
-        userId: dto.userId,
+        userId: dto?.userId,
       },
     });
 
@@ -101,6 +89,8 @@ export class ParcelService {
       where: { id },
       data: {
         ...dto,
+        customerId: Number(dto.customerId),
+
         ...(dto.status && {
           statusHistory: {
             create: {

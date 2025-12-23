@@ -57,6 +57,7 @@
     "dotenv": "^17.2.3",
     "fs": "0.0.1-security",
     "handlebars": "^4.7.8",
+    "lodash": "^4.17.21",
     "module-alias": "^2.2.3",
     "mongoose": "^8.20.0",
     "nodemailer": "^7.0.10",

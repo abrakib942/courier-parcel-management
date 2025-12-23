@@ -34,7 +34,7 @@ const AppTopbar = ({ onMenuToggle, isMenuOpen }: AppTopbarProps) => {
   return (
     <div
       className={cn(
-        'fixed h-20 z-[997] left-0 top-0 w-full px-4',
+        'fixed h-20 z-[50] left-0 top-0 w-full px-4',
         'bg-surface-card transition-[left] duration-200',
         'flex items-center gap-4 shadow-layout',
         'md:justify-between md:px-3 md:gap-2',

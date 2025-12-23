@@ -34,6 +34,8 @@ const Page = () => {
       .finally(() => {});
   }, []);
 
+  console.log({ roles });
+
   const getBadgeVariant = (status: string) => {
     const severity = getSeverity(status);
     if (severity === 'success') return 'default';

@@ -10,6 +10,7 @@ import {
   Delete,
   Put,
   Inject,
+  ValidationPipe,
 } from '@nestjs/common';
 import { ParcelService } from './parcel.service';
 import { CheckAbility } from '@/common/decorators';
@@ -27,7 +28,8 @@ export class ParcelController {
   @UseGuards(PermissionGuard)
   @HttpCode(HttpStatus.OK)
   @Post('api/v1/parcels')
-  async create(@Body() dto: CreateParcelDto) {
+  async create(@Body(new ValidationPipe({ transform: true })) dto: CreateParcelDto) {
+    console.log({ dto });
     return await this.parcelService.save(dto);
   }
 

@@ -9,7 +9,10 @@ export type AppSubjects =
   | 'file'
   | 'parcel'
   | 'agent-assignment'
-  | 'parcel-status-history';
+  | 'parcel-status-history'
+  | 'location-tracking'
+  | 'payment'
+  | 'analytics';
 export type AppActions = 'manage' | 'create' | 'read' | 'update' | 'delete';
 
 export type AppAbility = PrismaAbility<[AppActions, AppSubjects]>;

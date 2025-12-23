@@ -18,6 +18,9 @@ import { HealthModule } from './modules/health/health.module';
 import { ParcelModule } from './modules/parcel/parcel.module';
 import { AgentAssignmentModule } from './modules/agent-assignment/agent-assignment.module';
 import { ParcelHistoryModule } from './modules/parcel-history/parcel-history.module';
+import { LocationTrackingModule } from './modules/location-tracking/location-tracking.module';
+import { PaymentModule } from './modules/payment/payment.module';
+import { AnalyticsModule } from './modules/analytics/analytics.module';
 
 @Module({
   imports: [
@@ -70,6 +73,9 @@ import { ParcelHistoryModule } from './modules/parcel-history/parcel-history.mod
     ParcelModule,
     AgentAssignmentModule,
     ParcelHistoryModule,
+    LocationTrackingModule,
+    PaymentModule,
+    AnalyticsModule,
   ],
   providers: [TransformInterceptor],
 })

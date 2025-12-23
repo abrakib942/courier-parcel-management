@@ -491,4 +491,64 @@ export class UserService {
 
     return createSuccessResult(data, 'User deleted successfully');
   }
+
+  async getCustomers(): Promise<ServiceResult> {
+    const users = await this.db.user.findMany({
+      where: {
+        roles: {
+          some: {
+            role: {
+              name: 'Customer',
+            },
+          },
+        },
+      },
+      include: {
+        roles: {
+          include: {
+            role: true,
+          },
+        },
+        permissions: {
+          include: {
+            permission: true,
+          },
+        },
+      },
+    });
+
+    const data = users.map(user => this.mapToProfile(user));
+
+    return createSuccessResult(data, 'Customers retrieved successfully');
+  }
+
+  async getAgents(): Promise<ServiceResult> {
+    const users = await this.db.user.findMany({
+      where: {
+        roles: {
+          some: {
+            role: {
+              name: 'Agent',
+            },
+          },
+        },
+      },
+      include: {
+        roles: {
+          include: {
+            role: true,
+          },
+        },
+        permissions: {
+          include: {
+            permission: true,
+          },
+        },
+      },
+    });
+
+    const data = users.map(user => this.mapToProfile(user));
+
+    return createSuccessResult(data, 'Agents retrieved successfully');
+  }
 }

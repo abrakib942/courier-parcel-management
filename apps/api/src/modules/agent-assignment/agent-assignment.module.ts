@@ -4,6 +4,6 @@ import { AgentAssignmentService } from './agent-assignment.service';
 
 @Module({
   controllers: [AgentAssignmentController],
-  providers: [AgentAssignmentService]
+  providers: [AgentAssignmentService],
 })
 export class AgentAssignmentModule {}

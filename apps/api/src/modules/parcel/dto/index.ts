@@ -1,16 +1,18 @@
 import { IsEnum, IsNotEmpty, IsOptional, IsString, IsNumber } from 'class-validator';
 import { PaymentType, ParcelStatus, PaymentStatus } from '@prisma/client';
 import { PartialType } from '@nestjs/mapped-types';
+import { Type } from 'class-transformer';
 
 export class CreateParcelDto {
   //   @IsString()
   //   @IsNotEmpty()
   //   trackingCode: string;
 
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
-  customerId: number;
+  customerId: string;
 
+  @Type(() => Number)
   @IsNumber()
   @IsOptional()
   userId: number;
@@ -23,18 +25,22 @@ export class CreateParcelDto {
   @IsNotEmpty()
   deliveryAddress: string;
 
+  @Type(() => Number)
   @IsOptional()
   @IsNumber()
   pickupLat?: number;
 
+  @Type(() => Number)
   @IsOptional()
   @IsNumber()
   pickupLng?: number;
 
+  @Type(() => Number)
   @IsOptional()
   @IsNumber()
   deliveryLat?: number;
 
+  @Type(() => Number)
   @IsOptional()
   @IsNumber()
   deliveryLng?: number;
@@ -56,6 +62,7 @@ export class CreateParcelDto {
   @IsEnum(PaymentStatus)
   paymentStatus: PaymentStatus;
 
+  @Type(() => Number)
   @IsOptional()
   @IsNumber()
   codAmount?: number;

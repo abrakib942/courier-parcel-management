@@ -4,6 +4,6 @@ import { ParcelService } from './parcel.service';
 
 @Module({
   controllers: [ParcelController],
-  providers: [ParcelService]
+  providers: [ParcelService],
 })
 export class ParcelModule {}

@@ -30,7 +30,7 @@ const Modal = (props: {
         <DialogHeader>
           <DialogTitle>{header}</DialogTitle>
         </DialogHeader>
-        <div className="py-4">{body}</div>
+        <div className=" py-4 max-h-[80vh] overflow-y-auto custom-scrollbar px-1">{body}</div>
         {button && (
           <DialogFooter>
             <Button type="button" variant={button.variant ?? 'default'} onClick={button.onClick}>
