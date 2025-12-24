@@ -54,6 +54,7 @@ const Page = () => {
                   'pickupLng',
                   'deliveryLat',
                   'deliveryLng',
+                  'createdAt',
                   'updatedAt',
                 ],
                 actionIdentifier: 'id',
@@ -61,6 +62,7 @@ const Page = () => {
                   _.map(data, d => ({
                     ...d,
                     customer: d.customer?.name,
+                    assignments: d?.assignments?.agent?.name,
                   })),
               }}
               addNew={{
@@ -95,7 +97,7 @@ const Page = () => {
                   type: 'select-sync',
                   name: 'customerId',
                   title: 'Customer',
-                  placeholder: 'Enter customer ID',
+                  placeholder: 'Select Customer',
                   initialValue: null,
                   options: _.map(
                     customers || [],

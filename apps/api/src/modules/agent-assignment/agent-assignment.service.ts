@@ -16,7 +16,7 @@ export class AgentAssignmentService {
     }
 
     const existingAssignment = await this.db.agentAssignment.findFirst({
-      where: { parcelId: dto.parcelId },
+      where: { parcelId: Number(dto.parcelId) },
     });
 
     if (existingAssignment) {
@@ -28,14 +28,14 @@ export class AgentAssignmentService {
 
     const data = await this.db.agentAssignment.create({
       data: {
-        parcelId: dto.parcelId,
-        agentId: dto.agentId,
+        parcelId: Number(dto.parcelId),
+        agentId: Number(dto.agentId),
       },
     });
 
     // update parcel status
     await this.db.parcel.update({
-      where: { id: dto.parcelId },
+      where: { id: Number(dto.parcelId) },
       data: { status: 'PICKED_UP' },
     });
 
@@ -89,7 +89,7 @@ export class AgentAssignmentService {
 
     const data = await this.db.agentAssignment.update({
       where: { id },
-      data: { ...dto },
+      data: { parcelId: Number(dto.parcelId), agentId: Number(dto.agentId) },
     });
 
     return createSuccessResult(data, 'Agent assignment updated successfully');

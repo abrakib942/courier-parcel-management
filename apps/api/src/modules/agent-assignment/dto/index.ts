@@ -2,13 +2,11 @@ import { PartialType } from '@nestjs/mapped-types';
 import { IsNumber, IsNotEmpty } from 'class-validator';
 
 export class CreateAgentAssignmentDto {
-  @IsNumber()
   @IsNotEmpty()
-  parcelId: number;
+  parcelId: string | number;
 
-  @IsNumber()
   @IsNotEmpty()
-  agentId: number;
+  agentId: string | number;
 }
 
 export class UpdateAgentAssignmentDto extends PartialType(CreateAgentAssignmentDto) {}

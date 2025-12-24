@@ -63,14 +63,15 @@ const AppTopbar = ({ onMenuToggle, isMenuOpen }: AppTopbarProps) => {
           'md:[&>img]:h-8',
         )}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        {}
+        {/* <img
           src="/images/example-logo.svg"
           width="auto"
           height="100%"
           alt="Example"
           className="h-10 max-w-full object-contain"
-        />
+        /> */}
+        Courier Parcel Management
       </Link>
 
       <div

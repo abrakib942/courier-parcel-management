@@ -41,6 +41,8 @@ export const getCustomers = () => callGetApi(apiBaseUrl + `/api/v1/customers`);
 
 export const getAgents = () => callGetApi(apiBaseUrl + `/api/v1/agents`);
 
+export const getParcels = () => callGetApi(apiBaseUrl + `/api/v1/parcels`);
+
 export interface UploadFileToStorageOptions {
   file: File;
   fileName?: string;

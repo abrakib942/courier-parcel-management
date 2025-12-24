@@ -1,19 +1,28 @@
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import './globals.css';
+import ReduxProvider from '../lib/ReduxProvider';
+import AuthProvider from '../lib/AuthProvider';
+import { Toaster } from '../components/ui/toaster';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Public Website',
-  description: 'Public website boilerplate',
+  title: 'Courier Service - Track Your Parcels',
+  description: 'Book and track your parcels with ease',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={inter.className}>
+        <ReduxProvider>
+          <AuthProvider>
+            {children}
+            <Toaster />
+          </AuthProvider>
+        </ReduxProvider>
+      </body>
     </html>
   );
 }

@@ -292,7 +292,7 @@ function GenericViewGenerator({
   // });
 
   const getAllData = (getApiUri: string, handleDataCallback?: (data: any) => any) => {
-    callGetApi(getApiUri, null, true)
+    callGetApi(getApiUri, null, false)
       .then(response => {
         if (!response) throw { message: 'Server not working!' };
 
