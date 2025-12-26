@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: courier-parcel-api
+    ports:
+      - "5002:5002"
+    env_file:
+      - apps/api/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
