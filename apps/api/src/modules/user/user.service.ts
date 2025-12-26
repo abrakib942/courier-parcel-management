@@ -252,7 +252,7 @@ export class UserService {
 
   async register(dto: UserRegisterDto): Promise<ServiceResult> {
     console.log({ dto });
-    if (!dto.email || !dto.password || !dto.name) { 
+    if (!dto.email || !dto.password || !dto.name) {
       return createErrorResult(
         { name: 'badRequest', message: 'Name, email, and password are required' },
         'Name, email, and password are required',

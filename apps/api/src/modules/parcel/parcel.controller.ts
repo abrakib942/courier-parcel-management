@@ -52,9 +52,7 @@ export class ParcelController {
     @Query('limit') limit?: string,
     @Query('status') status?: string,
   ) {
-
     const customerId = req.user?.id;
-    
 
     return await this.parcelService.getMyParcels(
       customerId,

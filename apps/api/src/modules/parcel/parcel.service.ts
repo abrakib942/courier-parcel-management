@@ -46,7 +46,6 @@ export class ParcelService {
     return createSuccessResult(data, 'Parcels retrieved successfully');
   }
 
-  
   async getMyParcels(
     customerId: number,
     page: number = 1,
