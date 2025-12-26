@@ -66,17 +66,17 @@ export default function RegisterPage() {
       const { confirmPassword, ...registerData } = data;
       const result = await register(registerData).unwrap();
 
-      if (result.success && result.data) {
+      if (result.data) {
         dispatch(
           setCredentials({
             user: result.data.user,
-            token: result.data.token,
+            access_token: result.data.access_token,
           }),
         );
 
         toast({
           title: 'Registration successful',
-          description: 'Welcome to SwiftParcel!',
+          description: 'Welcome to AB Logistics!',
         });
 
         router.push('/dashboard');

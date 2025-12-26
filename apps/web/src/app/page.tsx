@@ -10,7 +10,7 @@ export default function HomePage() {
         <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Package className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold">SwiftParcel</span>
+            <span className="text-xl font-bold">AB Logistics</span>
           </div>
           <div className="flex gap-4">
             <Link href="/login">
@@ -86,7 +86,7 @@ export default function HomePage() {
 
       <footer className="border-t py-8">
         <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <p>&copy; 2024 SwiftParcel. All rights reserved.</p>
+          <p>&copy; 2025 AB Logistics. All rights reserved.</p>
         </div>
       </footer>
     </div>

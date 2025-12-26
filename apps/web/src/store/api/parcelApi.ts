@@ -3,14 +3,14 @@ import type { Parcel, CreateParcelRequest, TrackingInfo } from '../../types/parc
 import type { ApiResponse, PaginatedResponse } from '../../types/api';
 import type { RootState } from './store';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5002';
 
 export const parcelApi = createApi({
   reducerPath: 'parcelApi',
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
     prepareHeaders: (headers, { getState }) => {
-      const token = (getState() as RootState).auth.token;
+      const token = (getState() as RootState).auth.access_token;
       if (token) {
         headers.set('authorization', `Bearer ${token}`);
       }

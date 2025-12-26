@@ -17,6 +17,7 @@ import {
 } from '../ui/dropdown-menu';
 import { Avatar, AvatarFallback } from '../ui/avatar';
 import { useToast } from '../../hooks/use-toast';
+import Link from 'next/link';
 
 export default function Header() {
   const router = useRouter();
@@ -45,10 +46,10 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center px-4">
-        <div className="flex items-center gap-2 mr-8">
+        <Link href="/" className="flex items-center gap-2 mr-8">
           <Package className="h-6 w-6 text-primary" />
-          <span className="text-xl font-bold hidden sm:inline-block">SwiftParcel</span>
-        </div>
+          <span className="text-xl font-bold hidden sm:inline-block">AB Logistics</span>
+        </Link>
 
         <div className="flex-1" />
 

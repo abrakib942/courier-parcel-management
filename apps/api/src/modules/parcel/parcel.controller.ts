@@ -11,6 +11,8 @@ import {
   Put,
   Inject,
   ValidationPipe,
+  Query,
+  Request,
 } from '@nestjs/common';
 import { ParcelService } from './parcel.service';
 import { CheckAbility } from '@/common/decorators';
@@ -25,10 +27,10 @@ export class ParcelController {
   private readonly parcelService: ParcelService;
 
   @CheckAbility({ subject: parcelSubject, action: 'create' })
-  @UseGuards(PermissionGuard)
+  // @UseGuards(PermissionGuard)
   @HttpCode(HttpStatus.OK)
   @Post('api/v1/parcels')
-  async create(@Body(new ValidationPipe({ transform: true })) dto: CreateParcelDto) {
+  async create(@Body() dto: CreateParcelDto) {
     console.log({ dto });
     return await this.parcelService.save(dto);
   }
@@ -39,6 +41,40 @@ export class ParcelController {
   @Get('api/v1/parcels')
   async readAll() {
     return await this.parcelService.getAll();
+  }
+
+  @UseGuards(PermissionGuard)
+  @HttpCode(HttpStatus.OK)
+  @Get('api/v1/parcels/my-parcels')
+  async getMyParcels(
+    @Request() req: any,
+    @Query('page') page?: string,
+    @Query('limit') limit?: string,
+    @Query('status') status?: string,
+  ) {
+
+    const customerId = req.user?.id;
+    
+
+    return await this.parcelService.getMyParcels(
+      customerId,
+      parseInt(page || '1', 10),
+      parseInt(limit || '10', 10),
+      status,
+    );
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @Get('api/v1/parcels/track/:trackingCode')
+  async trackParcel(@Param('trackingCode') trackingCode: string) {
+    return await this.parcelService.trackByCode(trackingCode);
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @Put('api/v1/parcels/:id/cancel')
+  async cancelParcel(@Param('id') id: string, @Request() req: any) {
+    const customerId = req.user?.id;
+    return await this.parcelService.cancelParcel(parseInt(id, 10), customerId);
   }
 
   @CheckAbility({ subject: parcelSubject, action: 'read' })

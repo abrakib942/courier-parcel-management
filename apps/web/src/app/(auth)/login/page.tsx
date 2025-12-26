@@ -57,11 +57,12 @@ export default function LoginPage() {
     try {
       const result = await login(data).unwrap();
 
-      if (result.success && result.data) {
+      console.log({ result });
+      if (result.data) {
         dispatch(
           setCredentials({
             user: result.data.user,
-            token: result.data.token,
+            access_token: result.data.access_token,
           }),
         );
 

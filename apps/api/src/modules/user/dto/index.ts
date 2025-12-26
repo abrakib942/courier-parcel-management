@@ -68,6 +68,8 @@ export class UserDto {
 
 export class UserCreateDto extends OmitType(UserDto, ['status']) {}
 
+export class UserRegisterDto extends OmitType(UserDto, ['roleIds', 'status']) {}
+
 export class UserUpdateDto extends PartialType(OmitType(UserDto, ['password'])) {
   @IsOptional()
   @IsArray()

@@ -3,14 +3,14 @@ import type { RootState } from './store';
 import type { LoginRequest, RegisterRequest, AuthResponse } from '../../types/auth';
 import type { ApiResponse } from '../../types/api';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5002';
+const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5002';
 
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
     prepareHeaders: (headers, { getState }) => {
-      const token = (getState() as RootState).auth.token;
+      const token = (getState() as RootState).auth.access_token;
       if (token) {
         headers.set('authorization', `Bearer ${token}`);
       }
@@ -20,7 +20,7 @@ export const authApi = createApi({
   endpoints: builder => ({
     login: builder.mutation<ApiResponse<AuthResponse>, LoginRequest>({
       query: credentials => ({
-        url: '/api/v1/auth/login',
+        url: '/api/v1/auth/sign-in',
         method: 'POST',
         body: credentials,
       }),

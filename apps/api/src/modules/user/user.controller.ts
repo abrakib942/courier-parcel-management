@@ -18,6 +18,7 @@ import {
   AssignUserRolesDto,
   SignInUserDto,
   UserCreateDto,
+  UserRegisterDto,
   UserUpdateDto,
 } from './dto/index';
 import { UserService } from './user.service';
@@ -31,6 +32,12 @@ export class UserController {
   @Post('api/v1/auth/sign-in')
   async signIn(@Body() dto: SignInUserDto) {
     return await this.userService.signIn(dto);
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @Post('api/v1/auth/register')
+  async register(@Body() dto: UserRegisterDto) {
+    return await this.userService.register(dto);
   }
 
   @CheckAbility({ subject: 'user', action: 'create' })

@@ -12,7 +12,7 @@ import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 
 import { Gender, Prisma, UserStatus } from '@prisma/client';
-import { SignInUserDto, UserCreateDto, UserUpdateDto } from './dto/index';
+import { SignInUserDto, UserCreateDto, UserRegisterDto, UserUpdateDto } from './dto/index';
 
 type UserWithRelations = Prisma.UserGetPayload<{
   include: {
@@ -248,6 +248,88 @@ export class UserService {
     };
 
     return createSuccessResult(data, 'Hi, you are successfully signed in.');
+  }
+
+  async register(dto: UserRegisterDto): Promise<ServiceResult> {
+    console.log({ dto });
+    if (!dto.email || !dto.password || !dto.name) { 
+      return createErrorResult(
+        { name: 'badRequest', message: 'Name, email, and password are required' },
+        'Name, email, and password are required',
+      );
+    }
+
+    const customerRole = await this.db.role.findFirst({
+      where: {
+        name: 'Customer',
+      },
+    });
+
+    if (!customerRole) {
+      throw new Error('Customer role not found');
+    }
+
+    const { error, values: normalizedRoleIds } = await this.validateRoleIds([customerRole.id]);
+
+    if (error) {
+      return error;
+    }
+
+    if (!normalizedRoleIds.length) {
+      return createErrorResult(
+        { name: 'badRequest', message: 'At least one role is required' },
+        'At least one role is required',
+      );
+    }
+
+    const existingUser = await this.db.user.findFirst({
+      where: {
+        email: dto.email,
+      },
+    });
+
+    if (existingUser) {
+      throw new Error('user already exist');
+    }
+    const hashedPassword = await this.hash.generateHash(dto.password);
+
+    const user = await this.db.user.create({
+      data: {
+        name: dto.name,
+        email: dto.email,
+        password: hashedPassword,
+        phone: dto.phone || '',
+        nid: dto.nid,
+        dateOfBirth: dto?.dateOfBirth || '',
+        gender: dto?.gender as Gender | undefined,
+        address: dto.address || '',
+        status: 'ACTIVE' as UserStatus,
+      },
+    });
+
+    await this.syncUserRoles(user.id, normalizedRoleIds);
+
+    const data = await this.getUserProfile(user.id);
+
+    // Send email notification (non-blocking, let errors bubble if critical)
+    try {
+      const emailHtml = this.templateService.renderTemplate('user-creation-credentials', {
+        userName: dto.name,
+        userEmail: dto.email,
+        userPassword: dto.password,
+      });
+
+      void this.notificationService.sendEmail({
+        to: user.email,
+        subject: 'User Creation Success',
+        html: emailHtml,
+      });
+    } catch (error) {
+      console.error('UserService -> save -> email sending error:', error);
+      // Continue execution even if email fails
+    }
+
+    return createSuccessResult(data, 'User created successfully');
   }
 
   async save(dto: UserCreateDto): Promise<ServiceResult> {

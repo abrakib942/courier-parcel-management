@@ -8,9 +8,9 @@ export class CreateParcelDto {
   //   @IsNotEmpty()
   //   trackingCode: string;
 
-  @IsString()
+  @Type(() => Number)
   @IsNotEmpty()
-  customerId: string;
+  customerId: number;
 
   @Type(() => Number)
   @IsNumber()
@@ -53,12 +53,15 @@ export class CreateParcelDto {
   @IsString()
   parcelSize?: string;
 
+  @IsOptional()
   @IsEnum(ParcelStatus)
   status: ParcelStatus;
 
+  @IsOptional()
   @IsEnum(PaymentType)
   paymentType: PaymentType;
 
+  @IsOptional()
   @IsEnum(PaymentStatus)
   paymentStatus: PaymentStatus;
 
