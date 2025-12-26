@@ -593,6 +593,9 @@ importers:
         specifier: ^3.23.8
         version: 3.25.76
     devDependencies:
+      '@netlify/plugin-nextjs':
+        specifier: ^5.15.3
+        version: 5.15.3
       '@repo/eslint-config':
         specifier: '*'
         version: link:../../packages/eslint-config
@@ -3354,6 +3357,11 @@ packages:
       '@nestjs/core': 11.1.9(@nestjs/common@11.1.9)(@nestjs/platform-express@11.1.9)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/platform-express': 11.1.9(@nestjs/common@11.1.9)(@nestjs/core@11.1.9)
       tslib: 2.8.1
+    dev: true
+
+  /@netlify/plugin-nextjs@5.15.3:
+    resolution: {integrity: sha512-l3SicRpOy+27VTZbIhEgI89+uY+1Y3CsMZW3mfKBFC4A/sP7u33ftDZ45m6634dUcc6BnLNxPIxL6TiBdvqxOQ==}
+    engines: {node: '>=18.0.0'}
     dev: true
 
   /@next/env@15.5.6:
