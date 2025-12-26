@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: apps/storage/Dockerfile
-    container_name: custom-dynamic-website-boilerplate-monorepo-storage
+    container_name: courier-parcel-storage
     ports:
       - "5001:5001"
     env_file:
@@ -22,7 +22,7 @@ services:
     build:
       context: .
       dockerfile: apps/api/Dockerfile
-    container_name: custom-dynamic-website-boilerplate-monorepo-api
+    container_name: courier-parcel-api
     ports:
       - "5002:5002"
     env_file:
@@ -39,7 +39,7 @@ services:
     build:
       context: .
       dockerfile: apps/admin/Dockerfile
-    container_name: custom-dynamic-website-boilerplate-monorepo-admin
+    container_name: courier-parcel-admin
     ports:
       - "5003:5003"
     env_file:
@@ -56,7 +56,7 @@ services:
     build:
       context: .
       dockerfile: apps/web/Dockerfile
-    container_name: custom-dynamic-website-boilerplate-monorepo-web
+    container_name: courier-parcel-web
     ports:
       - "5004:5004"
     env_file:
