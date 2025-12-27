@@ -64,8 +64,9 @@ monorepo/
 1. Clone the repository:
 
 ```bash
-git clone <repository-url>
-cd
+git clone git@github.com:abrakib942/courier-parcel-management.git
+
+cd courier-parcel-management
 ```
 
 2. Install dependencies:
@@ -76,18 +77,6 @@ pnpm install
 
 3. Set up environment variables for each app:
 
-#### Storage (`apps/storage/.env`)
-
-```env
-NODE_ENV=development
-HOST=0.0.0.0
-PORT=5001
-JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
-ATTACHMENT_FOLDER_PATH=./external/uploads
-LOG_DIR_PATH=./external/logs
-PUBLIC_URL=http://127.0.0.1:5001
-LOCAL_URL=http://localhost:5001
-```
 
 #### API (`apps/api/.env`)
 
@@ -126,6 +115,7 @@ NEXT_PUBLIC_API_BASE_URL=http://localhost:5002
 4. Set up the database (for API):
 
 ```bash
+pnpm db:generate
 pnpm db:migrate:dev
 pnpm db:seed
 ```
@@ -207,7 +197,7 @@ pnpm db:studio
 Once the API is running, access the Swagger documentation at:
 
 ```
-http://localhost:5002/api/docs
+https://courier-parcel-management.onrender.com/api/docs
 ```
 
 The Swagger UI provides:
