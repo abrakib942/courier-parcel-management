@@ -34,4 +34,4 @@ EXPOSE 5002
 
 # CMD sh -c "pnpm prisma migrate deploy && node dist/main.js"
 
-CMD sh -c "pnpm prisma generate --config prisma/prisma.config.ts && pnpm prisma migrate deploy --config prisma/prisma.config.ts && node dist/main.js"
+CMD sh -c "pnpm prisma generate --config prisma/prisma.config.ts && pnpm prisma migrate deploy --config prisma/prisma.config.ts && node dist/src/main.js"
