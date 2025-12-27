@@ -46,9 +46,9 @@ COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 WORKDIR /app/apps/api
 
 # Generate Prisma client in production
-RUN pnpm --filter @repo/api db:generate
+RUN pnpm --filter api db:generate
 
 EXPOSE 5002
 
-CMD ["pnpm", "--filter", "@repo/api", "start"]
+CMD ["pnpm", "--filter", "api", "start"]
 
