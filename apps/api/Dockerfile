@@ -19,8 +19,8 @@ COPY apps/api ./apps/api
 
 # Generate Prisma client and build
 WORKDIR /app/apps/api
-RUN pnpm --filter @repo/api db:generate
-RUN pnpm --filter @repo/api build
+RUN pnpm --filter api db:generate
+RUN pnpm --filter api build
 
 # Production stage
 FROM node:20-alpine AS runner
