@@ -11,6 +11,7 @@
     "db:seed": "ts-node prisma/seed.ts",
     "db:studio": "prisma studio --config ./prisma/prisma.config.ts",
     "dev": "nest start --debug --watch",
+    "prebuild": "prisma generate",
     "build": "nest build",
     "start": "pnpm db:migrate:prod && node dist/src/main.js",
     "lint": "eslint \"{src,test}/**/*.ts\"",
