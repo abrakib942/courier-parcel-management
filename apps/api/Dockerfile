@@ -28,7 +28,7 @@ RUN pnpm install --frozen-lockfile --prod
 WORKDIR /app/apps/api
 
 # Generate Prisma Client in production
-RUN pnpm prisma generate
+# RUN pnpm prisma generate
 
 EXPOSE 5002
 
