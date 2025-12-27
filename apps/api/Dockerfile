@@ -19,7 +19,7 @@ COPY apps/api ./apps/api
 
 # Generate Prisma client and build
 WORKDIR /app/apps/api
-# RUN pnpm --filter api db:generate
+RUN pnpm db:generate
 RUN pnpm build
 
 # Production stage
