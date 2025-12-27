@@ -12,7 +12,7 @@
     "db:studio": "prisma studio --config ./prisma/prisma.config.ts",
     "dev": "nest start --debug --watch",
     "build": "nest build",
-    "start": "db:generate && node dist/src/main.js",
+    "start": "pnpm db:migrate:prod && node dist/src/main.js",
     "lint": "eslint \"{src,test}/**/*.ts\"",
     "lint:fix": "eslint \"{src,test}/**/*.ts\" --fix",
     "format": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\"",
